@@ -3,6 +3,7 @@ package scenarios;
 import config.BaseTest;
 import homePage.PracticeForm;
 import org.junit.jupiter.api.Test;
+import java.time.Month;
 
 public class AutomationPracticeForm extends BaseTest {
     private PracticeForm practiceForm = new PracticeForm();
@@ -15,7 +16,7 @@ public class AutomationPracticeForm extends BaseTest {
                 .setValueInInputField("name@example.com", "Whitecat@mail.ru")
                 .clickByRadiobutton("Male")
                 .setValueInInputField("Mobile Number", "8005553535")
-                .setDatePickerValue("04 Jan 1993")
+                .setDatePickerValue(04, Month.JANUARY, 1993)
                 .setValueInSubjects("CatValue")
                 .clickByCheckbox("Sports")
                 .clickByCheckbox("Music")

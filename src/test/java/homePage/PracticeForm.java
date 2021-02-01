@@ -1,8 +1,13 @@
 package homePage;
 
 import com.codeborne.selenide.Condition;
+import org.openqa.selenium.Keys;
 
 import java.io.File;
+import java.time.LocalDate;
+import java.time.Month;
+import java.time.format.DateTimeFormatter;
+import java.util.Locale;
 
 import static com.codeborne.selenide.Selenide.*;
 
@@ -58,9 +63,13 @@ public class PracticeForm {
         return this;
     }
 
-    public PracticeForm setDatePickerValue(String date) {
-        executeJavaScript(
-                String.format("$('[id=dateOfBirthInput]').val('%s')", date));
+    public PracticeForm setDatePickerValue(int day, Month month, int year) {
+        String inputField = "//input[@id='dateOfBirthInput']";
+        $x(inputField).sendKeys(Keys.CONTROL + "a");
+        LocalDate localDate = LocalDate.of(year, month, day);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MMM yyyy", new Locale("en"));
+        String formattedString = localDate.format(formatter);
+        $x(inputField).sendKeys(formattedString + Keys.ENTER);
         return this;
     }
 
