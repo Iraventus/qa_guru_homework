@@ -50,9 +50,11 @@ public class PracticeForm {
        return this;
     }
 
-    public PracticeForm setValueInSubjects (String value) {
+    public PracticeForm setValueInSubjects (String key, String value) {
         String selector = "//input[@id='subjectsInput']";
-        $x(selector).setValue(value);
+        String listSelector = "//div[contains(@id, 'react')]";
+        $x(selector).sendKeys(key);
+        $$x(listSelector).filterBy(Condition.text(value)).first().click();
         return this;
     }
 

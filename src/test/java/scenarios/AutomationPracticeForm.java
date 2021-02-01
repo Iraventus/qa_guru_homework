@@ -17,7 +17,7 @@ public class AutomationPracticeForm extends BaseTest {
                 .clickByRadiobutton("Male")
                 .setValueInInputField("Mobile Number", "8005553535")
                 .setDatePickerValue(04, Month.JANUARY, 1993)
-                .setValueInSubjects("CatValue")
+                .setValueInSubjects("e", "English")
                 .clickByCheckbox("Sports")
                 .clickByCheckbox("Music")
                 .uploadFile("Smadj.jpg")
