@@ -37,7 +37,7 @@ public class AutomationPracticeForm extends BaseTest {
                 .setValueInInputField("First Name", name)
                 .setValueInInputField("Last Name", lastName)
                 .setValueInInputField("name@example.com", email)
-                .clickByRadiobutton("Male")
+                .clickByCheckbox("Male")
                 .setValueInInputField("Mobile Number", mobile)
                 .setDatePickerValue(04, Month.JANUARY, 1993)
                 .setValueInSubjects("e", "English")

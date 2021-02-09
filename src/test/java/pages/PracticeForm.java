@@ -1,7 +1,6 @@
 package pages;
 
 import com.codeborne.selenide.Condition;
-import com.codeborne.selenide.Selectors;
 import com.codeborne.selenide.SelenideElement;
 import org.assertj.core.api.SoftAssertions;
 import org.openqa.selenium.By;
@@ -29,11 +28,6 @@ public class PracticeForm {
     public PracticeForm setValueInInputField (String placeholderName, String value) {
       $("[placeholder='" + placeholderName + "']").val(value);
       return this;
-    }
-
-    public PracticeForm clickByRadiobutton(String radiobuttonName) {
-        $$(".custom-control-label").find(text(radiobuttonName)).click();
-        return this;
     }
 
     public PracticeForm clickByCheckbox(String checkboxName) {
