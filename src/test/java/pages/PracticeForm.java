@@ -36,7 +36,7 @@ public class PracticeForm {
     }
 
     public PracticeForm uploadFile (String filename) {
-        $("input[type='file']").uploadFile(new File("./src/test/resources/upload/" + filename));
+        $("#uploadPicture").uploadFile(new File("./src/test/resources/upload/" + filename));
         return this;
     }
 
@@ -47,7 +47,7 @@ public class PracticeForm {
     }
 
     public PracticeForm setValueInSubjects (String key, String value) {
-        $(By.id("subjectsInput")).val(key);
+        $("#subjectsInput").val(key);
         $(byText(value)).click();
         return this;
     }
