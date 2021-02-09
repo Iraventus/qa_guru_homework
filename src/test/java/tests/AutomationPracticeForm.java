@@ -47,7 +47,7 @@ public class AutomationPracticeForm extends BaseTest {
                 .setValueInInputField("Current Address", address)
                 .chooseDropDownList("Select State", "NCR")
                 .chooseDropDownList("Select City", "Delhi")
-                .clickButton("Submit")
+                .clickSubmit()
                 .checkTextVisible("Thanks for submitting the form")
                 .checkAttribute(expectedData);
     }

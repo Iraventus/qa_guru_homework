@@ -1,6 +1,7 @@
 package pages;
 
 import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.Selectors;
 import com.codeborne.selenide.SelenideElement;
 import org.assertj.core.api.SoftAssertions;
 import org.openqa.selenium.By;
@@ -13,6 +14,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 import java.util.Map;
 
+import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
@@ -30,16 +32,12 @@ public class PracticeForm {
     }
 
     public PracticeForm clickByRadiobutton(String radiobuttonName) {
-        String inputSelector = "//input[@value='%s']/following-sibling::label";
-        String selector = String.format(inputSelector, radiobuttonName);
-        $x(selector).click();
+        $$(".custom-control-label").find(text(radiobuttonName)).click();
         return this;
     }
 
     public PracticeForm clickByCheckbox(String checkboxName) {
-        String checkboxSelector = "//label[text()='%s']";
-        String selector = String.format(checkboxSelector, checkboxName);
-        $x(selector).click();
+        $$(".custom-control-label").find(text(checkboxName)).click();
         return this;
     }
 
@@ -49,11 +47,8 @@ public class PracticeForm {
     }
 
     public PracticeForm chooseDropDownList (String placeholderName, String chooseValue) {
-       String placeholderNameSelector = "//div[text()='%s']";
-       String selector = String.format(placeholderNameSelector, placeholderName);
-       $x(selector).click();
-       String chooseSelector = String.format(placeholderNameSelector, chooseValue);
-       $x(chooseSelector).click();
+       $(byText(placeholderName)).click();
+       $(byText(chooseValue)).click();
        return this;
     }
 
@@ -63,10 +58,8 @@ public class PracticeForm {
         return this;
     }
 
-    public PracticeForm clickButton (String buttonName) {
-        String buttonSelector = "//button[text()='%s']";
-        String selector = String.format(buttonSelector, buttonName);
-        $x(selector).click();
+    public PracticeForm clickSubmit() {
+        $("#submit").click();
         return this;
     }
 
@@ -74,15 +67,13 @@ public class PracticeForm {
         LocalDate localDate = LocalDate.of(year, month, day);
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MMM yyyy", new Locale("en"));
         String formattedString = localDate.format(formatter);
-        $(By.id("dateOfBirthInput")).sendKeys(Keys.CONTROL + "a");
-        $(By.id("dateOfBirthInput")).sendKeys(formattedString + Keys.ENTER);
+        $("#dateOfBirthInput").sendKeys(Keys.CONTROL + "a");
+        $("#dateOfBirthInput").sendKeys(formattedString + Keys.ENTER);
         return this;
     }
 
     public PracticeForm checkTextVisible(String text) {
-        String textSelector = "//*[contains(text(),'%s')]";
-        String selector = String.format(textSelector, text);
-        $x(selector).shouldBe(Condition.visible);
+        $(byText(text)).shouldBe(Condition.visible);
         return new PracticeForm();
     }
 
