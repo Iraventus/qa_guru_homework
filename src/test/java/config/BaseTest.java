@@ -14,12 +14,13 @@ public class BaseTest {
 
     @BeforeAll
     public static void setUp() {
-        addListener("AllureSelenide", new AllureSelenide());
+        addListener("AllureSelenide", new AllureSelenide().screenshots(true).savePageSource(true));
         Configuration.startMaximized = true;
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("enableVNC", true);
         capabilities.setCapability("enableVideo", true);
+        Configuration.browserCapabilities = capabilities;
         Configuration.remote = "https://user1:1234@selenoid.autotests.cloud:4444/wd/hub/";
     }
 
