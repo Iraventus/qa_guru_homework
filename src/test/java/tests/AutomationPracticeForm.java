@@ -2,6 +2,7 @@ package tests;
 
 import com.github.javafaker.Faker;
 import config.BaseTest;
+import org.junit.jupiter.api.DisplayName;
 import pages.PracticeForm;
 import org.junit.jupiter.api.Test;
 import java.time.Month;
@@ -32,6 +33,7 @@ public class AutomationPracticeForm extends BaseTest {
     }};
 
     @Test
+    @DisplayName("Тест на заполнение формы")
     public void testRun () {
         practiceForm.openURL()
                 .setValueInInputField("First Name", name)
@@ -41,7 +43,7 @@ public class AutomationPracticeForm extends BaseTest {
                 .setValueInInputField("Mobile Number", mobile)
                 .setDatePickerValue(04, Month.JANUARY, 1993)
                 .setValueInSubjects("e", "English")
-                .clickByCheckbox("Sports")
+                .clickByCheckbox("Sportsq")
                 .clickByCheckbox("Music")
                 .uploadFile("Smadj.jpg")
                 .setValueInInputField("Current Address", address)
