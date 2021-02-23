@@ -8,9 +8,6 @@ import pages.PracticeForm;
 import org.junit.jupiter.api.Test;
 
 import java.time.Month;
-import java.util.HashMap;
-import java.util.Map;
-
 
 public class AutomationPracticeForm extends BaseTest {
     private final PracticeForm practiceForm = new PracticeForm();
@@ -20,19 +17,6 @@ public class AutomationPracticeForm extends BaseTest {
     private static final String email = faker.internet().emailAddress("RU");
     private static final String mobile = faker.phoneNumber().subscriberNumber(10);
     private static final String address = faker.address().fullAddress();
-
-     Map<String, String> expectedData = new HashMap<>() {{
-        put("Student Name", name + " " + lastName);
-        put("Student Email", email);
-        put("Gender", "Male");
-        put("Mobile", mobile);
-        put("Date of Birth", "04 January,1993");
-        put("Subjects", "English");
-        put("Hobbies", "Sports, Music");
-        put("Picture", "Smadj.jpg");
-        put("Address", address);
-        put("State and City", "NCR Delhi");
-    }};
 
     @Test
     @DisplayName("Тест на заполнение формы")
@@ -53,7 +37,11 @@ public class AutomationPracticeForm extends BaseTest {
                 .chooseDropDownList("Select State", "NCR")
                 .chooseDropDownList("Select City", "Delhi")
                 .clickSubmit()
-                .checkTextVisible("Thanks for submitting the form")
-                .checkAttribute(expectedData);
+                .checkAttribute("Student Email", email)
+                .checkAttribute("Student Name", name)
+                .checkAttribute("Gender", "Male")
+                .checkAttribute("Mobile", mobile)
+                .checkAttribute("Date of Birth", "04 JANUARY,1993 ")
+                .checkAttribute("Address", address);
     }
 }

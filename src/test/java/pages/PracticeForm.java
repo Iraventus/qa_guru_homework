@@ -1,10 +1,6 @@
 package pages;
 
-import com.codeborne.selenide.Condition;
-import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
-import org.assertj.core.api.SoftAssertions;
-import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 
 import java.io.File;
@@ -12,7 +8,7 @@ import java.time.LocalDate;
 import java.time.Month;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
-import java.util.Map;
+
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
@@ -75,22 +71,9 @@ public class PracticeForm {
         return this;
     }
 
-    @Step("Проверка отображения текста {0}")
-    public PracticeForm checkTextVisible(String text) {
-        $(byText(text)).shouldBe(Condition.visible);
-        return new PracticeForm();
-    }
-
-    @Step("Проверка корректности введенных значений {0}")
-    public PracticeForm checkAttribute (Map<String, String> list) {
-        SoftAssertions softly = new SoftAssertions();
-        for(SelenideElement element: $$(".table-responsive tbody tr")) {
-            String key = element.$("td").getText();
-            String actualValue = element.$("td", 1).getText();
-            String expectedValue = list.get(key);
-            softly.assertThat(actualValue).isEqualTo(expectedValue);
-        }
-        softly.assertAll();
+    @Step("Проверка соответствия названия колонки {0} и значения {1}")
+    public PracticeForm checkAttribute(String attribute, String value) {
+        $(".table-responsive").shouldHave(text(attribute + " " + value));
         return this;
     }
 }
