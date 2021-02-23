@@ -20,6 +20,10 @@ compileTestJava {
     options.encoding = "UTF-8"
 }
 
+tasks.withType(Test) {
+    systemProperties += System.properties
+}
+
 dependencies {
     testImplementation "com.codeborne:selenide:5.18.0"
     testImplementation "io.qameta.allure:allure-selenide:2.13.6"
