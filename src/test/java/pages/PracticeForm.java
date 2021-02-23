@@ -81,7 +81,7 @@ public class PracticeForm {
         return new PracticeForm();
     }
 
-    @Step("Проверка корректности введенных значений")
+    @Step("Проверка корректности введенных значений {0}")
     public PracticeForm checkAttribute (Map<String, String> list) {
         SoftAssertions softly = new SoftAssertions();
         for(SelenideElement element: $$(".table-responsive tbody tr")) {
