@@ -43,7 +43,7 @@ public class AutomationPracticeForm extends BaseTest {
                 .setValueInInputField("Mobile Number", mobile)
                 .setDatePickerValue(04, Month.JANUARY, 1993)
                 .setValueInSubjects("e", "English")
-                .clickByCheckbox("Sportsй")
+                .clickByCheckbox("Sports")
                 .clickByCheckbox("Music")
                 .uploadFile("Smadj.jpg")
                 .setValueInInputField("Current Address", address)
