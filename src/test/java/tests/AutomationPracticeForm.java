@@ -6,21 +6,22 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import pages.PracticeForm;
 import org.junit.jupiter.api.Test;
+
 import java.time.Month;
 import java.util.HashMap;
 import java.util.Map;
 
 
 public class AutomationPracticeForm extends BaseTest {
-    private PracticeForm practiceForm = new PracticeForm();
-    private static Faker faker = new Faker();
-    private static String name = faker.name().firstName();
-    private static String lastName = faker.name().lastName();
-    private static String email = faker.internet().emailAddress("RU");
-    private static String mobile = faker.phoneNumber().subscriberNumber(10);
-    private static String address = faker.address().fullAddress();
+    private final PracticeForm practiceForm = new PracticeForm();
+    private static final Faker faker = new Faker();
+    private static final String name = faker.name().firstName();
+    private static final String lastName = faker.name().lastName();
+    private static final String email = faker.internet().emailAddress("RU");
+    private static final String mobile = faker.phoneNumber().subscriberNumber(10);
+    private static final String address = faker.address().fullAddress();
 
-/*    static Map<String, String> expectedData  = new HashMap<>() {{
+     Map<String, String> expectedData = new HashMap<>() {{
         put("Student Name", name + " " + lastName);
         put("Student Email", email);
         put("Gender", "Male");
@@ -31,12 +32,12 @@ public class AutomationPracticeForm extends BaseTest {
         put("Picture", "Smadj.jpg");
         put("Address", address);
         put("State and City", "NCR Delhi");
-    }};*/
+    }};
 
     @Test
     @DisplayName("Тест на заполнение формы")
     @Tag("positive")
-    public void testRun () {
+    public void testRun() {
         practiceForm.openURL()
                 .setValueInInputField("First Name", name)
                 .setValueInInputField("Last Name", lastName)
@@ -52,7 +53,7 @@ public class AutomationPracticeForm extends BaseTest {
                 .chooseDropDownList("Select State", "NCR")
                 .chooseDropDownList("Select City", "Delhi")
                 .clickSubmit()
-                .checkTextVisible("Thanks for submitting the form");
-                //.checkAttribute(expectedData);
+                .checkTextVisible("Thanks for submitting the form")
+                .checkAttribute(expectedData);
     }
 }
