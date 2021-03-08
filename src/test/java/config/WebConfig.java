@@ -14,4 +14,7 @@ public interface WebConfig extends Config {
 
     @Key("search.remote")
     String searchRemote();
+
+    @Key("video.storage")
+    String videoStorage();
 }

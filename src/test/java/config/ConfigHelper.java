@@ -16,6 +16,10 @@ public class ConfigHelper {
         return getConfig().searchRemote();
     }
 
+    public static String getVideoStorage() {
+        return getConfig().videoStorage();
+    }
+
     private static WebConfig getConfig() {
         return ConfigFactory.newInstance().create(WebConfig.class, System.getProperties());
     }

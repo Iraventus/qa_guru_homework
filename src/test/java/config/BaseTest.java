@@ -33,7 +33,7 @@ public class BaseTest {
             attachScreenshot("Last screenshot");
             attachPageSource();
             attachAsText("Browser console logs", getConsoleLogs());
-            if(System.getProperty("video_storage") != null)
+            if(ConfigHelper.getVideoStorage() != null)
             attachVideo();
             closeWebDriver();
         }

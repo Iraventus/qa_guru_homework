@@ -1,6 +1,7 @@
 package helpers;
 
 import com.codeborne.selenide.Selenide;
+import config.ConfigHelper;
 import io.qameta.allure.Attachment;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -36,7 +37,7 @@ public class AttachmentsHelper {
     }
 
     public static String getVideoUrl() {
-        return System.getProperty("video_storage") + getSessionId() + ".mp4";
+        return ConfigHelper.getVideoStorage() + getSessionId() + ".mp4";
     }
 
     public static String getSessionId() {
