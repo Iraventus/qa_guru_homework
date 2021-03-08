@@ -16,14 +16,15 @@ public class BaseTest {
     public static void setUp() {
         addListener("AllureSelenide", new AllureSelenide());
         Configuration.startMaximized = true;
-        Configuration.browser = System.getProperty("browser", "chrome");
+        Configuration.browser = ConfigHelper.getSearchBrowser();
+        Configuration.browserVersion = ConfigHelper.getSearchVersion();
 
         if (System.getProperty("remote_driver") != null) {
             DesiredCapabilities capabilities = new DesiredCapabilities();
             capabilities.setCapability("enableVNC", true);
             capabilities.setCapability("enableVideo", true);
             Configuration.browserCapabilities = capabilities;
-            Configuration.remote = System.getProperty("remote_driver");
+            Configuration.remote = ConfigHelper.getSearchRemote();
         }
     }
 
