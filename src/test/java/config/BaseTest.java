@@ -19,7 +19,7 @@ public class BaseTest {
         Configuration.browser = ConfigHelper.getSearchBrowser();
         Configuration.browserVersion = ConfigHelper.getSearchVersion();
 
-        if (System.getProperty("remote_driver") != null) {
+        if (ConfigHelper.getSearchRemote() != null) {
             DesiredCapabilities capabilities = new DesiredCapabilities();
             capabilities.setCapability("enableVNC", true);
             capabilities.setCapability("enableVideo", true);
